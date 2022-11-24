@@ -1,0 +1,223 @@
+<?php
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Home\HomeSliderController;
+use App\Http\Controllers\Home\AboutController;
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('/', function () {
+    return view('frontend.index');
+});
+
+Route::controller(AdminController::class)->group(function(){
+    Route::get('/admin/logout','destroy')->name('admin.logout');
+    Route::get('/admin/profile','profile')->name('admin.profile');
+    Route::get('/edit/profile','editprofile')->name('edit.profile');
+    Route::post('/store/profile','storeprofile')->name('store.profile');
+    Route::get('/change/password','changepassword')->name('change.password');
+    Route::post('/update/password','updatepassword')->name('update.password');
+    // Route::get('/login','login')->name('login');
+    
+});
+Route::controller(HomeSliderController::class)->group(function(){
+    Route::get('/home/slide','HomeSlider')->name('home.slide');
+    Route::post('/update/slide','UpdateSlider')->name('update.slider');
+   
+    
+});
+
+Route::controller(AboutController::class)->group(function(){
+    Route::get('/about/page','AboutPage')->name('about.page');
+   
+    
+});
+// Route::get('/tweet', \App\Http\Controllers\Tweet\IndexController::class)->name('tweet.index');
+
+// Route::middleware('auth')->group(function(){
+//     Route::post('/tweet/create', \App\Http\Controllers\Tweet\CreateController::class)->name('tweet.create');
+
+// Route::get('/tweet/update/{tweetId}', \App\Http\Controllers\Tweet\Update\IndexController::class)
+// ->name('tweet.update.index')->where('tweetId', '[0-9]+');
+
+
+// Route::put('/tweet/update/{tweetId}', \App\Http\Controllers\Tweet\Update\PutController::class)
+// ->name('tweet.update.put')->where('tweetId','[0-9]+');
+
+// Route::delete('/tweet/delete/{tweetId}', \App\Http\Controllers\Tweet\DeleteController::class)->name('tweet.delete');
+
+
+// });
+
+Route::get('/dashboard', function () {
+    return view('admin.index');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+require __DIR__.'/auth.php';
+
+
+
+// // Route::get('/findwhere',function(){
+
+// //     $post =Post::where('id',2)->orderBy('id','desc')->take(1)->get();
+// //     return $post;
+// //     // $post = Post::all();
+
+// //     // foreach ($post as $post) {
+// //     //     return $post->title;
+// //     // }
+
+// // });
+
+// Route::get('/findmore', function(){
+//     $post = Post::findOrFail(1);
+//     return $post;
+// });
+
+// // Route::get('/basicinsert',function(){
+// //     $post = new Post;
+// //     $post->title ='New Eloquent title insert';
+// //     $post->content= 'Wow,Eloquent is really cool';
+// //     $post->save();
+// // });
+
+// // Route::get('/basicinsert1',function(){
+// //     $post = Post::find(1);
+// //     $post->title ='New Eloquent title insert 1';
+// //     $post->content= 'Wow,Eloquent is really cool 1';
+// //     $post->save();
+// // });
+
+// Route::get('/create', function(){
+
+
+//      Post::create(['title'=>'the create method','content'=>'WOW I
+//      \'am learning a lot with Hakobune']);
+
+
+// });
+
+// Route::get('/update',function(){
+//     Post::where('id', 2)->where('is_admin',0)->update(['title'=>'NEW PHP TITLE','content'=>'IM THE BEST']);
+// });
+
+// Route::get('/delete',function(){
+
+//     Post::destroy([4,5]);
+//     //   Post::where('is_admin',0)->delete();
+// //     $post=Post::find(5);
+// //     $post->delete();
+// });
+
+
+// Route::get('/softdelete', function(){
+
+//     Post::find(1)->delete();
+
+// });
+
+// Route::get('/readsoftdelete', function(){
+
+//    $post =Post::withTrashed()->where('id',1)->get();
+//    return $post;
+    
+// });
+
+// // Route::get('/restore',function(){
+// //     Post::withTrashed()->where('is_admin',0)->restore();
+// // });
+
+// // Route::get('/fdelete',function(){
+// //     Post::withTrashed()->where('id',3)->forceDelete();
+// // });
+
+// // Route::get('/user/{id}/post', function($id){
+// //   return User::find($id)->post;
+    
+// // });
+
+// // Route::get('/post/{id}/user', function($id){
+// //     return Post::find($id)->user->name;
+// // });
+
+// Route::get('/posts',function(){
+
+//     $user = User::find(1);
+//     foreach($user->posts as $post){
+//       echo  $post->title."<br>";
+//     }
+// });
+
+// Route::get('/user/{id}/role',function(){
+
+//     $user = User::find(1);
+//     foreach($user->roles as $role){
+//         return $role->name;
+//     }
+// });
+
+// Route::get('user/pivot',function(){
+
+//     $user = User::find(1);
+//     foreach($user->roles as $role){
+//         echo $role->pivot->created_at;
+//     }
+
+
+// });
+
+// Route::get('user/country', function(){
+
+//     $country = Country::find(2);
+
+//     foreach($country->posts as $post){
+//         return $post->content;
+//     }
+
+// });
+// Route::get('user/photos', function(){
+
+//     $user = User::find(1);
+
+//     foreach($user->photos as $photo){
+
+//         return $photo->path;
+
+//     }
+// });
+// Route::get('post/photos', function(){
+
+//     $post = Post::find(2);
+
+//     foreach($post->photos as $photo){
+
+//         return $photo->path;
+
+//     }
+// });
+// Route::get('photo/{id}/post',function($id){
+//     $photo = Photo::findorFail($id);
+//     return $photo->imageable;
+// });
+
+
+// Route::get('/post/tag',function(){
+
+//     $post=Post::find(1);
+//     foreach($post->tags as $tag){
+
+//         echo $tag->name;
+
+//     }
+
+
+
+// });

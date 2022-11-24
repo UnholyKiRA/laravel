@@ -1,0 +1,1 @@
+<img src="{{asset('logo/hb.png')}}" width="100px">
