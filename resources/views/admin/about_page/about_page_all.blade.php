@@ -12,7 +12,7 @@
 
             <h4 class="card-title">About Page </h4>
             
-            <form method="post" action="{{ route('update.slider') }}" enctype="multipart/form-data">
+            <form method="post" action="{{ route('update.about') }}" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="id" value="{{ $aboutpage->id }}">
 
@@ -35,7 +35,9 @@
             <div class="row mb-3">
                 <label for="example-text-input" class="col-sm-2 col-form-label">Short Description</label>
                 <div class="col-sm-10">
-                    <input name="title" class="form-control" type="text" value="{{ $aboutpage->short_description }}"  id="example-text-input">
+                    <textarea required="" name="short_description" class="form-control" rows="5">
+                        {{ $aboutpage->short_description }}
+                    </textarea>
                 </div>
             </div>
             <!-- end row -->
@@ -43,14 +45,36 @@
               <div class="row mb-3">
                 <label for="example-text-input" class="col-sm-2 col-form-label">Long Description</label>
                 <div class="col-sm-10">
-                    <input name="short_title" class="form-control" type="text" value="{{ $aboutpage->long_description }}"  id="example-text-input">
+                    <textarea id="elm1" name="long_description">
+                        {{ $aboutpage->long_description }}
+                    </textarea>
                 </div>
             </div>
 
+
+
+            <div class="row mb-3">
+                <label for="example-text-input" class="col-sm-2 col-form-label">About Image </label>
+                <div class="col-sm-10">
+                    <input name="about_image" class="form-control" type="file" id="image">
+                </div>
+            </div>
+
+
+            <div class="row mb-3">
+                <label for="example-text-input" class="col-sm-2 col-form-label">  </label>
+               <div class="col-sm-10">
+                   <img id="showImage" class="rounded avatar-lg" src="{{ (!empty($aboutpage->about_image))? url( $aboutpage->about_image):url('upload/no_image.jpg') }}" alt="Card image cap">
+               </div>
+           </div>
+
+
+
+
             <!-- end row -->
-<input type="submit" class="btn btn-info waves-effect waves-light" value="Update Slide">
+<input type="submit" class="btn btn-info waves-effect waves-light" value="Update About Page">
             </form>
-            {{-- im caradacsdf  --}}
+          
            
            
         </div>
