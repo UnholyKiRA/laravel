@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\About;
 use App\Models\MultiImage;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\App;
 use Image;
 
 class AboutController extends Controller
