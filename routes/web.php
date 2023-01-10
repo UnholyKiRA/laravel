@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Home\HomeSliderController;
 use App\Http\Controllers\Home\AboutController;
 use App\Http\Controllers\Home\PortfolioController;
+use App\Http\Controllers\Home\BlogCategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -57,8 +58,14 @@ Route::controller(PortfolioController::class)->group(function(){
     Route::get('/edit/portfolio/{id}','EditPortfolio')->name('edit.portfolio');
     Route::post('/update/portfolio', 'UpdatePortfolio')->name('update.portfolio');
     Route::get('/delete/portfolio/{id}','DeletePortfolio')->name('delete.portfolio');
-
+    Route::get('/portfolio/details/{id}','PortfolioDetails')->name('portfolio.details');
    
+    
+});
+
+Route::controller(BlogCategoryController::class)->group(function(){
+    Route::get('/all/blog/category','AllBlogCategory')->name('all.blog.category');
+    Route::get('/add/blog/category','AddBlogCategory')->name('add.blog.category');
    
     
 });
