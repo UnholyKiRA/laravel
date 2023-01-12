@@ -1,3 +1,4 @@
+
 @extends('admin.admin_master')
 @section('admin')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -10,7 +11,7 @@
     <div class="card">
         <div class="card-body">
 
-            <h4 class="card-title">Protfolio Page </h4>
+            <h4 class="card-title">Blog Page </h4>
             
             <form method="post" action="{{ route('store.portfolio') }}" enctype="multipart/form-data">
                 @csrf
@@ -18,22 +19,24 @@
                
 
             <div class="row mb-3">
-                <label for="example-text-input" class="col-sm-2 col-form-label">Protfolio Name</label>
+                <label for="example-text-input" class="col-sm-2 col-form-label">Blog Category Name</label>
                 <div class="col-sm-10">
-                    <input name="portfolio_name" class="form-control" type="text" id="example-text-input">
-                    @error('portfolio_name')
-                    <span class="text-danger"> {{ $message }} </span>
-                    @enderror
+                    <select name="blog_category_id" class="form-select" aria-label="Default select example">
+                        <option selected="">Open this select menu</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                        </select>
                 </div>
             </div>
             <!-- end row -->
 
               <div class="row mb-3">
-                <label for="example-text-input" class="col-sm-2 col-form-label">Protfolio Title </label>
+                <label for="example-text-input" class="col-sm-2 col-form-label">Blog Title </label>
                 <div class="col-sm-10">
-                    <input name="portfolio_title" class="form-control" type="text" id="example-text-input">
+                    <input name="blog_title" class="form-control" type="text" id="example-text-input">
 
-                    @error('portfolio_title')
+                    @error('blog_title')
                     <span class="text-danger"> {{ $message }} </span>
                     @enderror
                 </div>
@@ -43,9 +46,9 @@
  
 
             <div class="row mb-3">
-                <label for="example-text-input" class="col-sm-2 col-form-label">Protfolio Description </label>
+                <label for="example-text-input" class="col-sm-2 col-form-label">Blog Description </label>
                 <div class="col-sm-10">
-      <textarea id="elm1" name="portfolio_description">
+      <textarea id="elm1" name="blog_description">
    
       </textarea>
                 </div>
@@ -53,9 +56,9 @@
             <!-- end row -->
 
              <div class="row mb-3">
-                <label for="example-text-input" class="col-sm-2 col-form-label">Protfolio Image </label>
+                <label for="example-text-input" class="col-sm-2 col-form-label">Blog Image </label>
                 <div class="col-sm-10">
-           <input name="portfolio_image" class="form-control" type="file" id="image">
+           <input name="blog_image" class="form-control" type="file" id="image">
                 </div>
             </div>
             <!-- end row -->
