@@ -1,6 +1,10 @@
 @extends('frontend.main_master')
 @section('main')
 
+@section('title')
+About | Personal Portfolio Website
+@endsection
+
 <main>
 
     <!-- breadcrumb-area -->

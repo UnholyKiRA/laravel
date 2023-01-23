@@ -58,6 +58,7 @@ Route::controller(AboutController::class)->group(function(){
 
 Route::controller(PortfolioController::class)->group(function(){
     Route::get('/all/portfolio','AllPortfolio')->name('all.portfolio');
+    Route::get('/portfolio','HomePortfolio')->name('home.portfolio');
     Route::get('/add/portfolio','AddPortfolio')->name('add.portfolio');
     Route::post('/store/portfolio','StorePortfolio')->name('store.portfolio');
     Route::get('/edit/portfolio/{id}','EditPortfolio')->name('edit.portfolio');
@@ -103,6 +104,10 @@ Route::controller(FooterController::class)->group(function () {
 });
 Route::controller(ContactController::class)->group(function () {
     Route::get('/contact', 'Contact')->name('contact.me');
+    Route::post('/store/message', 'StoreMessage')->name('store.message');
+    Route::get('/contact/message', 'ContactMessage')->name('contact.message');
+    Route::get('/delete/message/{id}', 'DeleteMessage')->name('delete.message'); 
+
 
 });
 
