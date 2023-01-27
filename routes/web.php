@@ -8,6 +8,7 @@ use App\Http\Controllers\Home\BlogCategoryController;
 use App\Http\Controllers\Home\BlogController;
 use App\Http\Controllers\Home\FooterController;
 use App\Http\Controllers\Home\ContactController;
+use App\Http\Controllers\Demo\DemoController;
 
 
 /*
@@ -25,6 +26,17 @@ Route::get('/', function () {
     return view('frontend.index');
 });
 
+Route::controller(DemoController::class)->group(function(){
+    Route::get('/','HomeMain')->name('home');
+});
+
+
+
+
+
+Route::middleware(['auth'])->group(function(){
+
+
 Route::controller(AdminController::class)->group(function(){
     Route::get('/admin/logout','destroy')->name('admin.logout');
     Route::get('/admin/profile','profile')->name('admin.profile');
@@ -34,6 +46,9 @@ Route::controller(AdminController::class)->group(function(){
     Route::post('/update/password','updatepassword')->name('update.password');
     // Route::get('/login','login')->name('login');
     
+});
+
+
 });
 Route::controller(HomeSliderController::class)->group(function(){
     Route::get('/home/slide','HomeSlider')->name('home.slide');

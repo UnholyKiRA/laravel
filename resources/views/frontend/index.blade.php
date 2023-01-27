@@ -2,7 +2,7 @@
 @section('main')
 
 @section('title')
-Home| Personal Portfolio Website
+Home | Personal Portfolio Website
 
 @endsection
     <!-- banner-area -->
